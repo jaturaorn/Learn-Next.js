@@ -18,9 +18,18 @@ export default function BackToTopBtn() {
         setisActive(false);
       }
     };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // clean up the event listeners
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   return (
     <Link
+      to="home"
+      smooth={true}
       className={`${
         !isActive && "hidden"
       } fixed bg-accent hover:bg-accent-hover w-12
